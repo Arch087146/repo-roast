@@ -34,7 +34,7 @@ roasting is not a crime (yet).
 
 ## Pairs well with
 
-- [`git-regret`](https://github.com/) — proves your hacks were regrets
-- [`repo-sanitizer`](https://github.com/) — finds the secrets you're about to leak
+- [`git-regret`](https://github.com/Arch087146/git-regret) — proves your hacks were regrets
+- [`repo-sanitizer`](https://github.com/Arch087146/repo-sanitizer) — finds the secrets you're about to leak
 
 MIT
