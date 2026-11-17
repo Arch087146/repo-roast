@@ -1,7 +1,5 @@
-node_modules/
+*.exe
+dist/
 *.log
 .env
 .DS_Store
-
-# bundled hosted API key: ships in the npm package, never in the public repo
-src/keys.js
