@@ -1,38 +1,38 @@
 # repo-roasted 🔥
 
-An AI that roasts your codebase. Two modes:
+An AI that roasts your codebase. **Interactive TUI**, one-shot CLI, and LLM mode:
 
-- **Offline (default):** zero dependencies, fully deterministic — scans your
-  files and git history for 20+ roastable signals, then serves a brutal,
-  evidence-based roast. Same repo, same roast, every time. Share the screenshot.
-- **`--smart`:** LLM-powered roast. Works with **OpenRouter** (recommended)
-  or OpenAI. Falls back to offline mode automatically if no key or the API
-  is unreachable.
+- **TUI (default):** run it with no arguments in a terminal — arrow-key menus,
+  animated repo scanning, typewriter roast reveal, and an animated
+  roastability meter. Zero dependencies, pure ANSI.
+- **Offline one-shot:** `npx repo-roasted .` — deterministic evidence-based
+  roast, same repo = same roast, share the screenshot.
+- **`--smart`:** LLM-powered roast via OpenRouter or OpenAI, falls back to
+  offline automatically.
 
 ## Usage
 
 ```bash
-npx repo-roasted            # roast the current repo (offline)
-npx repo-roasted ../other   # roast someone else's repo (their pain, your fun)
-npx repo-roasted --smart    # LLM-powered roast
+npx repo-roasted                  # interactive TUI
+npx repo-roasted .                # one-shot offline roast
+npx repo-roasted ../other         # roast someone else's repo (their pain, your fun)
+npx repo-roasted --smart          # LLM-powered roast
 npx repo-roasted --smart --model openai/gpt-4o-mini   # pick your model
-npx repo-roasted --json     # machine-readable roast
-npx repo-roasted --md ROAST.md  # write a shareable markdown roast
+npx repo-roasted --json           # machine-readable roast
+npx repo-roasted --md ROAST.md    # write a shareable markdown roast
 ```
+
+Run tests with `npm test` (uses node's built-in test runner — zero deps, obviously).
 
 ### LLM keys (`--smart`), in priority order
 
-1. `OPENROUTER_API_KEY` env var — your own [OpenRouter](https://openrouter.ai) key (any model)
-2. **Bundled hosted key** — the npm package ships with a small free-tier key so it works out of the box
-3. `OPENAI_API_KEY` env var — your own OpenAI key
+1. `OPENROUTER_API_KEY` env var — your own [OpenRouter](https://openrouter.ai) key, any model
+2. `OPENAI_API_KEY` env var — your own OpenAI key
+3. No key? The deterministic offline roast always works.
 
-No key at all? The deterministic offline roast always works.
-
-Default model: `meta-llama/llama-3.1-8b-instruct:free` (change with `--model`
-or the `OPENROUTER_MODEL` env var). Browse models at
+Default model: `meta-llama/llama-3.1-8b-instruct:free` — change with `--model`
+or the `OPENROUTER_MODEL` env var. Browse models at
 [openrouter.ai/models](https://openrouter.ai/models).
-
-Run tests with `npm test` (uses node's built-in test runner — zero deps, obviously).
 
 ## How the roast engine works
 

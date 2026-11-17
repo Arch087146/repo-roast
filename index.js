@@ -29,6 +29,9 @@ function help() {
 
 Usage: repo-roasted [dir] [options]
 
+Run with no arguments in a terminal → interactive TUI.
+Run with flags for one-shot output (scripts, CI):
+
   dir               repo to roast (default: current directory)
   --smart           LLM-powered roast (OpenRouter or OpenAI)
   --model <id>      pick a model, e.g. "openai/gpt-4o-mini" or
@@ -47,6 +50,11 @@ No key? The offline roast is always available.`);
 async function main() {
   const argv = process.argv.slice(2);
   if (argv.includes("--help") || argv.includes("-h")) return help();
+
+  // No arguments + real terminal → launch the interactive TUI.
+  if (argv.length === 0 && process.stdout.isTTY && process.stdin.isTTY) {
+    return require("./src/app").main();
+  }
 
   // Values right after --md/--model are file paths/model names, not the repo.
   const mdIdx = argv.indexOf("--md");
