@@ -12,9 +12,9 @@ An AI that roasts your codebase. Two modes:
 ## Usage
 
 ```bash
-npx repo-roast           # roast the current repo (offline)
-npx repo-roast ../other  # roast someone else's repo (their pain, your fun)
-npx repo-roast --smart   # LLM-powered roast (needs OPENAI_API_KEY)
+npx repo-roasted           # roast the current repo (offline)
+npx repo-roasted ../other  # roast someone else's repo (their pain, your fun)
+npx repo-roasted --smart   # LLM-powered roast (needs OPENAI_API_KEY)
 ```
 
 ## What it looks for
