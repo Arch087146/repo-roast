@@ -4,12 +4,20 @@
   "description": "An AI that roasts your codebase. Works offline with brutal heuristics; gets personal with an API key.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Arch087146/repo-roast"
+    "url": "git+https://github.com/Arch087146/repo-roast.git"
   },
   "bin": {
-    "repo-roast": "./index.js"
+    "repo-roast": "index.js"
   },
-  "keywords": ["roast", "code-review", "fun", "cli", "ai"],
+  "keywords": [
+    "roast",
+    "code-review",
+    "fun",
+    "cli",
+    "ai"
+  ],
   "license": "MIT",
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }
