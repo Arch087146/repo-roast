@@ -1,8 +1,12 @@
 {
   "name": "repo-roasted",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An AI that roasts your codebase. Works offline with brutal heuristics; gets personal with an API key.",
-  "files": ["index.js", "src/", "test/"],
+  "files": [
+    "index.js",
+    "src/",
+    "test/"
+  ],
   "scripts": {
     "test": "node --test"
   },
