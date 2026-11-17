@@ -12,17 +12,29 @@ An AI that roasts your codebase. **Interactive TUI**, one-shot CLI, and LLM mode
 
 ## Usage
 
+**Go edition** — single compiled binary, no runtime needed.
+
 ```bash
-npx repo-roasted                  # interactive TUI
-npx repo-roasted .                # one-shot offline roast
-npx repo-roasted ../other         # roast someone else's repo (their pain, your fun)
-npx repo-roasted --smart          # LLM-powered roast
-npx repo-roasted --smart --model openai/gpt-4o-mini   # pick your model
-npx repo-roasted --json           # machine-readable roast
-npx repo-roasted --md ROAST.md    # write a shareable markdown roast
+# from source (requires Go 1.22+)
+go install github.com/Arch087146/repo-roast@latest
+
+# or grab a prebuilt binary from GitHub Releases
+# or build locally
+git clone https://github.com/Arch087146/repo-roast && cd repo-roast
+go build -o repo-roasted .
 ```
 
-Run tests with `npm test` (uses node's built-in test runner — zero deps, obviously).
+```bash
+repo-roasted                  # interactive TUI
+repo-roasted .                # one-shot offline roast
+repo-roasted ../other         # roast someone else's repo (their pain, your fun)
+repo-roasted . --smart        # LLM-powered roast (OpenRouter or OpenAI)
+repo-roasted . --smart --model openai/gpt-4o-mini   # pick your model
+repo-roasted . --json         # machine-readable roast
+repo-roasted . --md ROAST.md  # write a shareable markdown roast
+```
+
+Run tests with `go test ./...`.
 
 ### LLM keys (`--smart`), in priority order
 

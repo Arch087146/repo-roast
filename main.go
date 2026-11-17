@@ -17,7 +17,30 @@ import (
 
 const version = "1.0.0"
 
+var valueFlags = map[string]bool{"--author": true, "--since": true, "--md": true, "--model": true, "--dir": true}
+
+var positional []string
+
+func extractPositionals() {
+	args := os.Args[1:]
+	var rest []string
+	for i := 0; i < len(args); i++ {
+		a := args[i]
+		if strings.HasPrefix(a, "-") && a != "-" {
+			rest = append(rest, a)
+			if valueFlags[a] && i+1 < len(args) && !strings.HasPrefix(args[i+1], "-") {
+				rest = append(rest, args[i+1])
+				i++
+			}
+			continue
+		}
+		positional = append(positional, a)
+	}
+	os.Args = append([]string{os.Args[0]}, rest...)
+}
+
 func main() {
+	extractPositionals()
 	smart := flag.Bool("smart", false, "LLM-powered roast (OpenRouter or OpenAI)")
 	model := flag.String("model", "", "LLM model id override (e.g. openai/gpt-4o-mini)")
 	jsonOut := flag.Bool("json", false, "machine-readable output")
@@ -26,8 +49,8 @@ func main() {
 	flag.Parse()
 
 	root, _ := os.Getwd()
-	if flag.NArg() > 0 {
-		root = flag.Arg(0)
+	if len(positional) > 0 {
+		root = positional[0]
 	}
 	root, _ = filepath.Abs(root)
 
@@ -37,7 +60,7 @@ func main() {
 	}
 
 	// no flags, real terminal → interactive TUI
-	if !*smart && *jsonOut == false && *md == "" && flag.NArg() == 0 && isTTY() {
+	if !*smart && !*jsonOut && *md == "" && len(positional) == 0 && isTTY() {
 		ui.Run(ui.Options{Root: root, Smart: *smart, Model: *model})
 		return
 	}
