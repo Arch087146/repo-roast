@@ -1,6 +1,6 @@
 {
   "name": "repo-roasted",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "An AI that roasts your codebase. Works offline with brutal heuristics; gets personal with an API key.",
   "files": [
     "index.js",
